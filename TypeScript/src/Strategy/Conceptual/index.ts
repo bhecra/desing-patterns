@@ -8,7 +8,7 @@
 /**
  * The Context defines the interface of interest to clients.
  */
-class Context {
+export class Context {
     /**
      * @type {Strategy} The Context maintains a reference to one of the Strategy
      * objects. The Context does not know the concrete class of a strategy. It
