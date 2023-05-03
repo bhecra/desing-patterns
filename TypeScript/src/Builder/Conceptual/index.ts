@@ -142,6 +142,7 @@ function clientCode(director: Director) {
     console.log('Custom product:');
     builder.producePartA();
     builder.producePartC();
+    builder.producePartB();
     builder.getProduct().listParts();
 }
 
