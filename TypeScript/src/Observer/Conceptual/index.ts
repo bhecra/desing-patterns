@@ -28,7 +28,7 @@ interface Subject {
  * The Subject owns some important state and notifies observers when the state
  * changes.
  */
-class ConcreteSubject implements Subject {
+export class ConcreteSubject implements Subject {
     /**
      * @type {number} For the sake of simplicity, the Subject's state, essential
      * to all subscribers, is stored in this variable.
