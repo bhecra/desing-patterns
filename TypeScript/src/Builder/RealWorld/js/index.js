@@ -28,6 +28,23 @@ class Form {
   }
 }
 
+class FormDirector {
+  constructor(formBuilder) {
+    this.setBuilder(formBuilder);
+  }
+
+  setBuilder(formBuilder) {
+    this.formBuilder = formBuilder;
+  }
+
+  createPeopleForm() {
+    this.formBuilder.reset();
+    this.formBuilder
+      .setText('firstName', 'nombre')
+      .setText('lastName', 'Apellido');
+  }
+}
+
 class FormBuilder {
   constructor() {
     this.reset();
@@ -76,7 +93,8 @@ const formPeople = frmBuilder
 
 form1.innerHTML = formPeople.getContent();
 
-const formPeople2 = frmBuilder.setAction('add.php')
+const formPeople2 = frmBuilder
+  .setAction('add.php')
   .setText('firsName', 'Nombre')
   .setText('lastName', 'Apellido')
   .setText('city', 'Ciudad')
@@ -84,4 +102,9 @@ const formPeople2 = frmBuilder.setAction('add.php')
   .setDate('date', 'Fecha Nacimiento')
   .build();
 
-  form2.innerHTML =formPeople2.getContent()
+form2.innerHTML = formPeople2.getContent();
+
+
+const director = new FormDirector(frmBuilder);
+director.createPeopleForm()
+form3.innerHTML = frmBuilder.build().getContent()
