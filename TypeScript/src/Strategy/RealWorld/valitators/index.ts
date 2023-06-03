@@ -1,42 +1,10 @@
-import { IValidator } from "./validator.interface";
 import { EmailValidator } from "./email.validator";
 import { MaxLengthValidator } from "./max-length";
 import { MinLengthValidator } from "./min-length";
-
-
-// Clase de contexto que utiliza los validadores
-export class ValidationContext {
-
-  private validators: IValidator[];
-  private errors: string[];
-
-  constructor() {
-    this.validators = [];
-    this.errors = [];
-  }
-
-  addValidator(validator: IValidator) {
-    this.validators.push(validator);
-  }
-
-  validate(value) {
-    for (const validator of this.validators) {
-      const error = validator.validate(value);
-      if (error) {
-        this.errors.push(error);
-      }
-    }
-    return this.errors.length === 0;
-  }
-
-  getErrorReport() {
-    return this.errors.join("\n");
-  }
-}
-
+import { ValidationContext } from "./validator-strategy";
 
 const email = "usuario@dominio.com";
-const username = "use";
+const username = "user";
 const context = new ValidationContext();
 const usernameCtx = new ValidationContext();
 
