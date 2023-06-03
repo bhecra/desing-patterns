@@ -8,9 +8,11 @@ import { MinLengthValidator } from "./min-length";
 export class ValidationContext {
 
   private validators: IValidator[];
+  private errors: string[];
 
   constructor() {
     this.validators = [];
+    this.errors = [];
   }
 
   addValidator(validator: IValidator) {
@@ -19,11 +21,16 @@ export class ValidationContext {
 
   validate(value) {
     for (const validator of this.validators) {
-      if (!validator.validate(value)) {
-        return false;
+      const error = validator.validate(value);
+      if (error) {
+        this.errors.push(error);
       }
     }
-    return true;
+    return this.errors.length === 0;
+  }
+
+  getErrorReport() {
+    return this.errors.join("\n");
   }
 }
 
@@ -42,8 +49,10 @@ const emailVali = new EmailValidator()
 
 emailVali.validate(email);
 
-usernameCtx.addValidator(new MaxLengthValidator(7));
+usernameCtx.addValidator(new MaxLengthValidator(7, 'El error me da la gana'));
 usernameCtx.addValidator(new MinLengthValidator(4));
 
 console.log(context.validate(email));
+console.log(context.getErrorReport());
 console.log(usernameCtx.validate(username));
+console.log(usernameCtx.getErrorReport());

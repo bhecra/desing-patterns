@@ -1,3 +1,3 @@
 export interface IValidator {
-  validate(value: any): boolean
+  validate(value: any): string
 }
