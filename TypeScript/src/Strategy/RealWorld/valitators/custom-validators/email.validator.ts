@@ -1,10 +1,10 @@
-import { IValidator } from './validator.interface';
+import { IValidator } from '../validator.interface';
 
-export class EmailValidator implements IValidator {
+export class EmailValidator implements IValidator<string> {
   private _regExp = null;
   private _errorMesage = null;
-  constructor(regEx: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/, errorMesage?: string) {
-    this._regExp = regEx;
+  constructor({regExp=/^[^\s@]+@[^\s@]+\.[^\s@]+$/, errorMesage=''} = {}) {
+    this._regExp = regExp;
     this. _errorMesage = errorMesage;
   }
   validate(email: string): string {

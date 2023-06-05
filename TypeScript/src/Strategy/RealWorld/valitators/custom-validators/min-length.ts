@@ -1,6 +1,6 @@
-import { IValidator } from "./validator.interface";
+import { IValidator } from "../validator.interface";
 
-export class MinLengthValidator implements IValidator {
+export class MinLengthValidator implements IValidator<string> {
 
   private _minLength = null
   private _errorMesage = null;

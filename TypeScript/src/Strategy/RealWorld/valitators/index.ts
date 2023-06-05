@@ -1,12 +1,12 @@
-import { EmailValidator } from "./email.validator";
-import { MaxLengthValidator } from "./max-length";
-import { MinLengthValidator } from "./min-length";
-import { ValidationContext } from "./validator-strategy";
+import { EmailValidator } from "./custom-validators/email.validator";
+import { MaxLengthValidator } from "./custom-validators/max-length";
+import { MinLengthValidator } from "./custom-validators/min-length";
+import { ValidationStrategy } from "./validator-strategy";
 
 const email = "usuario@dominio.com";
-const username = "user";
-const context = new ValidationContext();
-const usernameCtx = new ValidationContext();
+const username = "use";
+const context = new ValidationStrategy();
+const usernameCtx = new ValidationStrategy();
 
 // Agregar los validadores necesarios
 context.addValidator(new EmailValidator());
