@@ -1,6 +1,6 @@
-import { IValidator } from './validator.interface';
+import { IValidator } from '../validator.interface';
 
-export class MaxLengthValidator implements IValidator {
+export class MaxLengthValidator implements IValidator<string> {
   private _maxLength = null;
   private _errorMesage = null;
   constructor(maxLength: number, errorMesage?: string) {

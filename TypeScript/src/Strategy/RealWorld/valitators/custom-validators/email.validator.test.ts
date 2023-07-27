@@ -10,7 +10,7 @@ describe('EmailValidator', () => {
     });
     it('should return string for a invalid email', () => {
       const email = 'usuariodominio.com';
-      expect(new EmailValidator().validate(email)).toBe('El email no cumple con la expresión solicitada');
+      expect(new EmailValidator({errorMesage: 'Invalid email'}).validate(email)).toBe('Invalid email');
     });
   })
 })
