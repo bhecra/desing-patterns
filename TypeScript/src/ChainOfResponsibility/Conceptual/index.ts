@@ -110,3 +110,6 @@ console.log('');
 
 console.log('Subchain: Squirrel > Dog\n');
 clientCode(squirrel);
+
+console.log('Subchain:  Dog\n');
+clientCode(dog);
