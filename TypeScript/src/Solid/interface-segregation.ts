@@ -1,27 +1,63 @@
-class User1 implements IUser1Ops {
+
+
+interface ICanWalk {
+  walk(distance:number):void;
+}
+interface ICanSwim {
+  swim(distance:number):void;
+}
+interface ICanFly {
+  fly(heigth:number):void;
+}
+interface IAnimal {
+  eat():void;
+  sleep():void;
+}
+class Animal implements IAnimal {
+  eat(): void {
+    throw new Error("Method not implemented.");
+  }
+  sleep(): void {
+    throw new Error("Method not implemented.");
+  }
+}
+
+class Fish extends Animal implements ICanSwim {
+  swim(distance: number): void {
+    throw new Error("Method not implemented.");
+  }
+  eat(): void {
+      console.log('The fish is eating');
+  }
 
 }
-class User2 implements IUser2Ops {
+
+class Bird extends Animal implements ICanFly {
+  fly(heigth: number): void {
+    console.log(`Bird is fliying: ${heigth} meters`);
+    
+  }
+  override eat(): void {
+    console.log(`Bird is eating bread`);
+      
+  }
 
 }
-class User3 implements IUser3Ops {
-
+class Dog implements IAnimal, ICanWalk {
+  walk(distance: number): void {
+    console.log(`Dog is walking: ${distance} meters`);
+  }
+  eat(): void {
+    console.log(`Dog is eating meet`);
+  }
+  sleep(): void {
+    console.log(`Dog is sleeping`);
+  }  
 }
 
-interface IUser1Ops {
-  
-}
-interface IUser2Ops {
+const jade = new Dog()
+const pajaro = new Bird()
 
-}
-interface IUser3Ops {
-
-}
-
-class Ops {
-
-  private _op1:IUser1Ops
-  private _op2:IUser2Ops
-  private _op3:IUser3Ops
-  
-}
+jade.eat()
+pajaro.eat()
+pajaro.fly(50)
