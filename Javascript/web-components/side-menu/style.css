@@ -1,0 +1,64 @@
+.side-menu-container {
+  width: 200px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+.menu-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #ddd;
+  min-width: 200px;
+  z-index: 1; /* Aseguramos que los subítems estén en capas superiores */
+}
+
+.sub-menu li {
+  border-bottom: 1px solid #ccc;
+}
+
+.sub-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.sub-menu a:hover {
+  background-color: #ccc;
+}
+
+.menu-item:hover .sub-menu {
+  display: block;
+  top: 0; /* Ajustamos la posición del submenú al abrirse */
+  left: 100%;
+  margin-top: -1px;
+}
+
+.sub-menu .menu-item:hover .sub-menu {
+  top: 0; /* Ajustamos la posición del submenú al abrirse */
+  left: -100%; /* Movemos el submenú hacia la izquierda para que esté junto al menú principal */
+}
