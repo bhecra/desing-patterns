@@ -3,7 +3,7 @@ import { FilterOperatorEnum, IFilter } from '../frontend/utils/index';
 interface IUser {
   age: number;
   name: string;
-  lastname: string;
+  lastName: string;
   id:  string;
 }
 
@@ -13,54 +13,54 @@ const users: IUser[] = [
     id: '1',
     age: 30,
     name: 'Christian',
-    lastname: 'Burbano',
+    lastName: 'Burbano',
   },
   {
     id: '2',
     age: 27,
     name: 'Geraldine',
-    lastname: 'Claros',
+    lastName: 'Claros',
   },
   {
     id: '3',
     age: 22,
     name: 'Dario',
-    lastname: 'Burbano',
+    lastName: 'Burbano',
   },
   {
     id: '4',
     age: 26,
     name: 'David',
-    lastname: 'Claros',
+    lastName: 'Claros',
   },
   {
 		name: "Jescie Brown",
 		age: 25,
-		lastname: "Hayden Parrish",
+		lastName: "Hayden Parrish",
 		id: '28'
 	},
 	{
 		name: "Ori Wilkerson",
 		age: 46,
-		lastname: "Tana Wheeler",
+		lastName: "Tana Wheeler",
 		id: '51'
 	},
 	{
 		name: "Baxter Barry",
 		age: 22,
-		lastname: "Nolan Davenport",
+		lastName: "Nolan Davenport",
 		id: '94'
 	},
 	{
 		name: "Barry Chang",
 		age: 58,
-		lastname: "Martena Conner",
+		lastName: "Martena Conner",
 		id: '5'
 	},
 	{
 		name: "Amber Kirk",
 		age: 24,
-		lastname: "Dara Saunders",
+		lastName: "Dara Saunders",
 		id: '10'
 	}
 ];
@@ -75,14 +75,26 @@ const users: IUser[] = [
     id: '3',
     age: 22,
     name: 'Dario Fernando',
-    lastname: 'Burbano',
+    lastName: 'Burbano',
   })
 
  const filter: IFilter = {
     args: {
-      'lastname':{
+      'lastName':{
         operator:FilterOperatorEnum.ILike,
         value: 'Burbano'
+      },
+      'age':{
+        operator:FilterOperatorEnum.GreaterThanOrEqualTo,
+        value: 30
+      }
+    }
+ }
+ const filter2: IFilter = {
+    args: {
+      'lastName':{
+        operator:FilterOperatorEnum.ILike,
+        value: 'Claros'
       }
     }
  }
@@ -95,9 +107,10 @@ const users: IUser[] = [
     }
  }
 
- console.log('paginator',await userRepository.search(filterPaginator));
+ console.log('paginator',await userRepository.search(filter));
   // console.log(await userRepository.get('3'));
   // console.log(await userRepository.delete('3'));
   // console.log(await userRepository.search());
-  // console.log(await userRepository.search(filter));
+  console.log(await userRepository.search(filter));
+  console.log(await userRepository.search(filter2));
 })()
