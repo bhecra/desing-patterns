@@ -6,10 +6,19 @@ const hasBalancedBrackets = (word: string) => {
     '{': '}',
     '(': ')',
   };
+  const isBrackets = {
+    '[': true,
+    ']': true,
+    '{': true,
+    '}': true,
+    '(': true,
+    ')': true,
+  };
 
   let isBalanced = true;
 
   for (const letter of clearWord) {
+    if(!isBrackets[letter]) continue;
     if (letter.trim()) {
       if (validBrackets[letter]) {
         openBrackets.push(letter);
@@ -28,4 +37,4 @@ const hasBalancedBrackets = (word: string) => {
 // console.log(hasBalancedBrackets('{[}'));
 // console.log(hasBalancedBrackets('{[]}'));
 // console.log(hasBalancedBrackets('({[]})'));
-console.log(hasBalancedBrackets('{ [ ( [ { ( )[ ]{ } } ] ) ] }'));
+console.log(hasBalancedBrackets('{ [ x ( [ { ( )[ Z ]{ } } x ] ) ] }'));
