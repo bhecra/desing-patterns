@@ -1,4 +1,4 @@
-const sumArray = (array: number[], number: number) => {
+export const sumArray2 = (array: number[], number: number) => {
   for (let index = 0; index < array.length - 1; index++) {
     const element = array[index];
 
@@ -8,7 +8,7 @@ const sumArray = (array: number[], number: number) => {
   }
   return false;
 };
-const sumArray2 = (array: number[], number: number) => {
+export const sumArray = (array: number[], number: number) => {
   let start = 0;
   let end = array.length - 1;
 
