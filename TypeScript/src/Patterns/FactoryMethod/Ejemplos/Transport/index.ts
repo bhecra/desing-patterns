@@ -5,7 +5,7 @@ import { Truck } from './type/truck';
 import { TransportTypeEnum } from './enums/transportTypeEnum';
 
 // Factory method
-abstract class TransportCreator {
+abstract class TransportCreatorFactory {
   public abstract createTransport(): ITransport;
 
   public deliver(): string {
@@ -15,27 +15,27 @@ abstract class TransportCreator {
 }
 
 // Concrete creators
-class ShipCreator extends TransportCreator {
+class ShipCreator extends TransportCreatorFactory {
   public createTransport(): ITransport {
     return new Ship();
   }
 }
-class TruckCreator extends TransportCreator {
+class TruckCreator extends TransportCreatorFactory {
   public createTransport(): ITransport {
     return new Truck();
   }
 }
-class AirplaneCreator extends TransportCreator {
+class AirplaneCreator extends TransportCreatorFactory {
   public createTransport(): ITransport {
     return new Airplane();
   }
 }
 
-function delivery(transportCreator: TransportCreator) {
+function delivery(transportCreator: TransportCreatorFactory) {
   console.log(transportCreator.deliver());
 }
 
-function selectTransport(type: TransportTypeEnum): TransportCreator {
+function selectTransport(type: TransportTypeEnum): TransportCreatorFactory {
   switch (type) {
     case TransportTypeEnum.Airplane:
       return new AirplaneCreator();
