@@ -1,10 +1,9 @@
-import { IHttpAdapter } from "../interface/http-adapter.interface";
-import { AxiosAdpater } from "../type/axios-adapter";
-import { FetchAdapter } from "../type/fetch-adapter";
-
+import { IHttpAdapter } from '../interface/http-adapter.interface'
+import { AxiosAdpater } from '../type/axios-adapter'
+import { FetchAdapter } from '../type/fetch-adapter'
 
 interface HttpCreatorFactory<T> {
-  createHttp(): IHttpAdapter<T>;
+  createHttp(): IHttpAdapter<T>
 }
 
 class FetchFactory<T> implements HttpCreatorFactory<T> {
@@ -18,13 +17,12 @@ class AxiosFactory<T> implements HttpCreatorFactory<T> {
   }
 }
 
-
-function appFactory(factory:HttpCreatorFactory<string>) {
+function appFactory(factory: HttpCreatorFactory<string>) {
   const http = factory.createHttp()
-  console.log(http.get({url: '', args:''}));
-  
-  
+  http.get({ url: 'https://pokeapi.co/api/v2/pokemon/ditto', args: '' }).then(response => {
+    console.log({ response })
+  })
 }
 
 appFactory(new FetchFactory())
-appFactory(new AxiosFactory())
+// appFactory(new AxiosFactory())

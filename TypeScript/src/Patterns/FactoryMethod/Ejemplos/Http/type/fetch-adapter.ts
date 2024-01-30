@@ -3,7 +3,7 @@ import { IHttpAdapter } from '../interface/http-adapter.interface'
 export class FetchAdapter<T> implements IHttpAdapter<T> {
   async get({ url, args }: { url: string; args?: any }): Promise<Response> {
     const headers = new Headers({
-      ...args.headers,
+      ...args?.headers,
     })
 
     const init: RequestInit = { method: 'GET', headers }
@@ -65,22 +65,9 @@ export class FetchAdapter<T> implements IHttpAdapter<T> {
       if (response.ok) {
         return response
       } else {
-        throw new Error(response.status.toString(), { cause: response }) // Lanzar un error con el código de estado HTTP
+        throw new Error(response.status.toString()) // Lanzar un error con el código de estado HTTP
       }
     } catch (error) {
-      let errorMessage = ''
-
-      ;(errorMessage = error.message), (error['detail'] = await error?.cause?.json())
-
-      // if (process.env.ENV !== 'production')
-      //   console.error(
-      //     errorMessage,
-      //     '\nError cause: ',
-      //     error?.cause,
-      //     '\nError detail: ',
-      //     error['detail']
-      //   );
-
       throw error // Lanzar un error con el código de estado HTTP
     }
   }
